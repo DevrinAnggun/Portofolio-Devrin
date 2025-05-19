@@ -1,0 +1,32 @@
+name: Deploy Portfolio
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: 18
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Build project
+      run: npm run build
+
+    - name: Deploy to Azure
+      run: az webapp up --name my-portfolio --resource-group my-resource-group --location eastus
+      env:
+        AZURE_WEBAPP_NAME: my-portfolio
+        AZURE_RESOURCE_GROUP: my-resource-group
+        AZURE_REGION: eastus

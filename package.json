@@ -1,0 +1,14 @@
+{
+  "name": "portofolio-devrin",
+  "version": "1.0.0",
+  "description": "Portofolio website with CI/CD",
+  "main": "index.js",
+  "scripts": {
+    "start": "node components/script.js",
+    "build": "mkdir -p dist && cp -R assets components index.html dist/"
+  },
+  "dependencies": {},
+  "devDependencies": {},
+  "author": "Devrin",
+  "license": "MIT"
+}
